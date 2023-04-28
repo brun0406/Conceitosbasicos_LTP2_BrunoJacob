@@ -9,6 +9,7 @@ Tabuada();
 Multi3();
 Fatorialde1a10();
 ImpostoDeRenda();
+Adivinha();
 
 void Somar2Num()
 {
@@ -150,5 +151,45 @@ void Fatorialde1a10()
 
 void ImpostoDeRenda()
 {
-    Console.WriteLine("imposto é roubo !");
+    //não irei considerar os dependentes porque não achei a base de cálculo
+    double Renda;
+    Console.WriteLine("informe o total de sua renda");
+    Renda = float.Parse(Console.ReadLine());
+    if (Renda <= 1903.98)
+    {
+        Console.WriteLine("você está isento");
+    }
+    else
+    {
+        if (Renda > 1903.98 && Renda <= 2826.65)
+        {
+            Renda = Renda * 0.075;
+            Console.WriteLine($"o valor a ser pago será de: {Renda} / peteleco bem dado pelo estado");
+        }
+        else
+        {
+            if(Renda >2826.65 && Renda < 3751.05)
+            {
+                Renda = Renda * 0.15;
+                Console.WriteLine($"o valor a ser pago será de: {Renda} / pescotapa do estado");
+            }
+            else
+            {
+                if(Renda>3751.05 && Renda <= 4664.68)
+                {
+                    Renda = Renda * 0.225;
+                    Console.WriteLine($"o valor a ser pago será de: {Renda} / facada do estado");
+                }
+                else {
+                    Renda = Renda * 0.275;
+                    Console.WriteLine($"o valor a ser pago será de: {Renda} / estripado pelo estado");
+                     }
+            }
+        }
+    }
+}
+
+void Adivinha()
+{
+    
 }
