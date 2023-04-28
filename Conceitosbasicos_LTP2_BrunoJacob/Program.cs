@@ -150,5 +150,5 @@ void Fatorialde1a10()
 
 void ImpostoDeRenda()
 {
-    Console.WriteLine("imposto é roubo!");
+    Console.WriteLine("imposto é roubo !");
 }
