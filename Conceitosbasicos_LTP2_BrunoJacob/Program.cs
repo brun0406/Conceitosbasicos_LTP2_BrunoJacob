@@ -1,15 +1,62 @@
 ﻿// See https://aka.ms/new-console-template for more information
-Somar2Num();
-MetrosMili();
-CauculaAumento();
-CalculaDesconto();
-AluguelCarro();
-IMC();
-Tabuada();
-Multi3();
-Fatorialde1a10();
-ImpostoDeRenda();
-Adivinha();
+string entradaUser = "";
+while(entradaUser != "0")
+{
+    Console.WriteLine("digite um número entre 1 e 13, o número digitado dará inicio a um programa / digitar zero encerra o programa");
+    entradaUser = Console.ReadLine();
+        if(entradaUser == "1")
+    {
+        Somar2Num();
+    }
+            if(entradaUser== "2")
+    {
+            MetrosMili();
+    }
+                if(entradaUser == "3")
+    {
+                CauculaAumento();
+    }
+                    if(entradaUser == "4")
+    {
+                    CalculaDesconto();
+    }
+                        if(entradaUser == "5")
+    {
+                        AluguelCarro();
+    }
+                            if(entradaUser == "6")
+    {
+                            IMC();
+    }
+                                if(entradaUser == "7")
+    {
+                                Tabuada();
+    }
+                                    if(entradaUser == "8")
+    {
+                                    Multi3();
+    }
+                                        if(entradaUser == "9")
+    {
+                                        Fatorialde1a10();
+    }
+                                            if (entradaUser == "10")
+    {
+                                            ImpostoDeRenda();
+    }
+                                                if (entradaUser == "11")
+    {
+                                                Adivinha();
+    }
+                                                    if(entradaUser == "12")
+    {
+                                                    Financiamento();
+    }
+                                                        if(entradaUser == "13")
+    {
+                                                        aposentadoria();
+    }
+}
 
 void Somar2Num()
 {
@@ -72,7 +119,7 @@ void AluguelCarro()
 void IMC()
 {
     float peso, altura, imc;
-    Console.WriteLine($"dê seu peso e altura");
+    Console.WriteLine($"dê seu peso e altura, respectivamente");
     peso = float.Parse(Console.ReadLine());
     altura = float.Parse(Console.ReadLine());
     imc = peso / (altura * altura);
@@ -191,5 +238,60 @@ void ImpostoDeRenda()
 
 void Adivinha()
 {
-    
+    int userTent, numAleatorio;
+    Random rand = new Random();
+    numAleatorio = rand.Next(1, 100);
+    Console.WriteLine("chute um número entre 1 e 100, você tem 10 tentativas para acertar o número");
+    for(int i = 0; i < 10; i++)
+    {
+        userTent = int.Parse(Console.ReadLine());
+        if (userTent == numAleatorio)
+        {
+            userTent = numAleatorio;
+            Console.WriteLine($"você acertou!");
+            break;
+        }      
+    }
+    Console.WriteLine($"você gastou todas suas tentativas! o número aleatório era: {numAleatorio}");
+}
+
+void Financiamento()
+{
+    /*
+    Quando é a taxa de financiamento de veículos?
+Taxas no financiamento de carros, segundo o BC
+
+Em média, as taxas mensais atualmente estão entre 0,91% e 3,86%, e anuais, entre 11,42% e 57,52%. Porém, podem mudar de uma semana para outra; por isso, o indicado é verificar periodicamente até comprar o veículo.
+    */
+    double valorVeic, parcela, taxa, valorFinc = 0;
+    Console.WriteLine("informe o valor de um veículo e o número de parcelas no financiamento, respectivamente");
+    valorVeic = float.Parse(Console.ReadLine());
+    parcela = float.Parse(Console.ReadLine());
+    taxa = (valorVeic * 0.02) * parcela;
+    if(parcela == 1)
+    {
+        taxa = valorVeic * 0.12;
+    }
+    valorFinc =  valorVeic + taxa;
+    Console.WriteLine($"o valor total foi: {valorFinc}");
+}
+void aposentadoria()
+{
+    //está sendo considerado que a rentabilidade anual é 4.5%, portanto a rentabilidade mensal será de 0.375 
+    double idadeAtual, idadeAposent, anosContri, ValorPmes, acumulador=0, montante=0, jurosComposto=0;
+    Console.WriteLine("informe sua idade atual e com que idade você planeja se aposentar");
+    idadeAtual = double.Parse(Console.ReadLine());
+    idadeAposent = double.Parse(Console.ReadLine());
+    anosContri = idadeAposent - idadeAtual;
+    Console.WriteLine("diga quanto você contribui por mês");
+    ValorPmes = double.Parse(Console.ReadLine());
+    for (int i = 0; i < anosContri; i++)
+    {        
+        acumulador = acumulador + (ValorPmes*12);
+        jurosComposto = jurosComposto + acumulador * 0.045;
+        montante = acumulador + jurosComposto;
+        Console.WriteLine(jurosComposto);
+    }
+    Console.WriteLine($"o acumulado por {anosContri} anos de contribuição,contribuindo {ValorPmes} $$ por mês foi: {montante}");
+    Console.WriteLine($"o total gerado pela rentabilidade foi: {jurosComposto}");
 }
